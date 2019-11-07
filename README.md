@@ -27,7 +27,7 @@ Also, in the "sqlmanager.php", lines 16-19 should be updated with credentials re
 
 Once the database is correctly configured and the ability to act as a server is enabled, you can run the following command from a terminal located where the directory is downloaded.
 ```
-  php -S 0.0.0.0:8888 <--- LAN access, can be accesed by host computer and other computer. The local ip must be used to                                connect to the server (such as 10.0.2.98:8888) in the searchbar
+  php -S 0.0.0.0:8888 <--- LAN access, can be accesed by host computer and other computer. The local ip must be used to connect to the server (such as 10.0.2.98:8888) in the searchbar
 ```
 ```
   php -S localhost:8888 <--- Local hosting & can only be accesed from host computer (localhost:8888 in searchbar)
@@ -37,9 +37,6 @@ Once the database is correctly configured and the ability to act as a server is 
 
 For this software to run, MySQL and PHP must be installed and configured to allow for server functionality and accepting connections.
 
-
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Built With
 
