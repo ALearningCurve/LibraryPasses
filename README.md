@@ -47,8 +47,9 @@ For this software to run, MySQL and PHP must be installed and configured to allo
 
 ## Authors
 
-* **William Walling-Sotolongo** - *Database Creation & Maintence, PHP Developer* - [ALearningCurve]
-(https://github.com/ALearningCurve)
+* **William Walling-Sotolongo** - *Database Creation & Maintence, PHP Developer* - [ALearningCurve](https://github.com/ALearningCurve)
+
+
 * **Meenu R.** - *HTML & CSS for home page and login page* 
 
 ## License
