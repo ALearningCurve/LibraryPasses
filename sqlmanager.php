@@ -1,22 +1,20 @@
 <?php
   /*
-  PHP script to intereact with the mysql databse located locally on this computer
+  PHP script to interact with the mysql database located locally on the server computer and then provide certain functions to display and change its content
+
+  Variables on lines 14-17 must be updated to accurately reflect the actual database credentials
   */
 
 
-
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-
-  // returns a connection which can then be later closed
+  // returns a connection and adds the connection to the database into the global variable socket_create_listen
+  // Should be closed after transaction is complete with $GLOBALS['conn']->close();
   function make_connection()
   {
     // Info to connect to database
-    $servername = 'localhost';
-    $username = 'williamws'; // Probably change this login
-    $passcode = 'williamws';
-    $databasename = 'LibraryPasses';
+    $servername = 'localhost'; // <-- Change only if the database is not hosted on the same machine
+    $username = 'williamws'; // Change this login
+    $passcode = 'williamws'; // Change this passcode
+    $databasename = 'LibraryPasses';  // Change this if the database is named differently
 
     $conn = new mysqli($servername, $username, $passcode, $databasename);
     $GLOBALS['conn'] = $conn; // adds the connection to the list of global variables
@@ -31,7 +29,7 @@
   }
 
 
-  // Gets all the students from the table and prints out their information
+  // Gets all the students from the table and prints out their information in the form of a table
   function print_student_information($conn)
   {
     // Get Info from a table
@@ -73,7 +71,7 @@
     echo '</table>';
   }
 
-  // Gets all the teachers from the table and prints out their information
+  // Gets all the teachers from the table and prints out their information in the form of a table
   function print_teacher_information($conn)
   {
     // Get Info from a table
@@ -93,7 +91,6 @@
     echo    '<th>Email</th>';
     echo '</tr>';
 
-    // echo "<br>";
     // Print out info from Querried mysql_list_table
     if ($result->num_rows > 0) {
       // output data of each row
@@ -116,7 +113,7 @@
   }
 
 
-  // Gets all the teachers from the table and prints out their information
+  // Gets all the teachers from the table and prints out their information such that it appears as a drop down multiple choice menu
   function drop_down_teacher_information()
   {
     make_connection();
@@ -136,7 +133,7 @@
     }
   }
 
-  // Gets all the slots from the table and prints out their information
+  // Gets all the slots from the table and prints out their information in the form of a table
   function print_slot_information($conn)
   {
     // Get Info from a table
@@ -182,7 +179,7 @@
 
 
 
-  // Gets all the Passes from the table and prints out their information
+  // Gets all the Passes from the table and prints out their information in the form of a table
   function print_passes_information($conn)
   {
     // Get Info from a table
@@ -275,8 +272,6 @@
 
     $GLOBALS['conn']->close();
 
-
-
     // Connect and query the database
     make_connection();
     $sql = "SELECT * from Passes where student_key IN ('$student_key') AND teacher_key IN ('$teacher_key') AND slot_key IN ('$slot_key')";
@@ -297,6 +292,7 @@
   }
 
 
+  //  outputs html of the variables that were entered into the form to display it onto a website
   function display_form_data()
   {
     echo "<br><h1> Info From Form </h1>";
@@ -335,7 +331,6 @@
 
     // returns the id of the last student with the same first and last name as the one on the form
     return $student_id;
-
   }
 
   // Makes a student from form data and returns the value of the id of the new student
@@ -364,7 +359,6 @@
 
     // returns the id of the last student with the same first and last name as the one on the form
     return $student_id;
-
   }
 
 
@@ -496,53 +490,6 @@
 
   }
 
-  /** Validate Student and Teacher Functions --> Unecesarry???
-  // Checks if given student is actually in the table & if they exist it will return its index
-  function validate_teacher($fname, $lname, $email) {
-    // Connect and query the database
-    make_connection();
-
-    $sql = "SELECT * FROM `Teachers` where `firstname` IN ('$fname') AND `lastname` IN ('$lname') AND `email` IN ('$email')";
-
-    $result = mysqli_query($GLOBALS['conn'], $sql) or die(mysqli_error($GLOBALS['conn']));
-    $GLOBALS['conn']->close();
-
-    // Loop through and find the last of id of student with the same first and last name
-    $slot_key = -1;
-    while($row = $result->fetch_assoc())
-    {
-        // echo "id: " . $row["id"]. " - Block: " . $row["block"]. " - Passes: " . $row["passes"] . " MaxStudents: " . $row["max_students"] . "<br>";
-        $slot_key = $row["id"];
-    }
-
-    // returns the id of the teacher in the parameters
-    return $slot_key;
-  }
-
-  // Checks if given student is actually in the table & if they exist it will return its index
-  function validate_student($fname, $lname, $email) {
-    // Connect and query the database
-    make_connection();
-
-    $sql = "SELECT * FROM `Students` where `firstname` IN ('$fname') AND `lastname` IN ('$lname') AND `email` IN ('$email')";
-
-    $result = mysqli_query($GLOBALS['conn'], $sql) or die(mysqli_error($GLOBALS['conn']));
-    $GLOBALS['conn']->close();
-
-    // Loop through and find the last of id of student with the same first and last name
-    $slot_key = -1;
-    while($row = $result->fetch_assoc())
-    {
-        // echo "id: " . $row["id"]. " - Block: " . $row["block"]. " - Passes: " . $row["passes"] . " MaxStudents: " . $row["max_students"] . "<br>";
-        $slot_key = $row["id"];
-    }
-
-    // returns the id of the student in the parametes
-    return $slot_key;
-  }
-
- */
-
 
   // Gets the max number of students for a slot from the SLOTS table under "max_students"
   function get_max_passes_from_slot($slot_key)
@@ -563,8 +510,8 @@
 
     // returns the id of the last student with the same first and last name as the one on the form
     return $max;
-
   }
+
 
   // Gets the passes from the "Passes" Column in the specified slot
   function get_passes_from_slot($slot_key)
@@ -585,8 +532,8 @@
 
     // returns the id of the last student with the same first and last name as the one on the form
     return $passes;
-
   }
+
 
   // Gets the number of passes in the "Passes" column in the specified slot
   // Uses "," which are inserted before every pass to count the pass number
@@ -606,6 +553,7 @@
 
     return 0;
   }
+
 
   /**
   * Gets accesses the sql table row of the slot_key and then adds the id of a pass to the column
@@ -632,7 +580,6 @@
   /**
   * removes a pass of given ID key from the Passes table
   * removes a pass of given ID key from the sql table row of slot_key in table SLOTS
-  finish this function
   */
   function remove_given_pass($slot_key, $pass_key)
   {
@@ -642,7 +589,6 @@
 
   /**
   * removes a pass of given ID key from the Passes table
-  finish this function
   */
   function delete_pass_from_slot($slot_key, $pass_key)
   {
@@ -660,6 +606,7 @@
     $result = mysqli_query($GLOBALS['conn'], $sql) or die(mysqli_error($GLOBALS['conn']));
     $GLOBALS['conn']->close();
   }
+
 
   /**
   * Gets accesses the sql table row of the slot_key and then removes the id of a pass from the column
@@ -700,8 +647,6 @@
   function process_new_pass ($student_key, $teacher_key, $slot_key) {
     $pass_id = make_new_pass($student_key, $teacher_key, $slot_key);
     add_pass_to_slot($slot_key, $pass_id);
-
-    // send_email($student_key, $teacher_key, $slot_key, $pass_id);
   }
 
   function sanatize_string($data)
@@ -743,25 +688,17 @@
 
   function empty_all_passes_in_slots()
   {
-
     // Get Info from a table
     make_connection();
-
     $sql = "SELECT * FROM Slots";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $GLOBALS['conn']->close();
 
-    // Get row numbers
-    //$num_rows = mysqli_num_rows($result);
-
-    if (true) {
-      // get use ID for each of the blocks to clear them all
-      while($row = $result->fetch_assoc())
-      {
-          $row_id = $row["id"];
-          empty_passes_from_slot($row_id);
-
-      }
+    // use ID for each of the blocks to clear the passes column of each
+    while($row = $result->fetch_assoc())
+    {
+        $row_id = $row["id"];
+        empty_passes_from_slot($row_id);
     }
   }
 
@@ -784,31 +721,4 @@
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $GLOBALS['conn']->close();
   }
-
-  /*
-  Isaac work here
-
-  function send_email($student_key, $teachchange_max_studentser_key, $slot_key, $pass_id)
-  {
-
-    make_connection();
-    $sql = "SELECT `email` FROM `Teachers` WHERE `id` = $teacher_key";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $GLOBALS['conn']->close();
-
-    // This is the email that was associated from the $teacher_key passed as an arguement
-    $teacher_email = $result->fetch_assoc()['email'];
-
-    make_connection();
-    $sql = "SELECT `name` FROM `Students` WHERE `id` = $student_key";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $GLOBALS['conn']->close();
-
-    $student_name = $result->fetch_assoc()['name'];
-
-    $msg = $student_name . " has taken a library pass and will be missing from your study";
-
-    mail($teacher_email, "Library Pass", $msg);
-  }
-  */
 ?>

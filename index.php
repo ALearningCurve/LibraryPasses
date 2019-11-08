@@ -1,26 +1,13 @@
 <!DOCTYPE html>
 <html>
-
-<div class="fullscreen nopadding">
-  <div id="header">
-    <img src="bromfield_trojan.jpeg" width="30px" />
-    <ul>
-      <li> Home </li>
-    </ul>
-  </div>
-
   <div class="header">
-    <h1>Bromfield Library Passes</h1>
+    <h1 align = "center">Bromfield Library Passes</h1>
   </div>
+
+
 </div>
 
-<p>
-<a href="login.php">Admin Login</a>
-</p>
 
-<div class="white nopadding more">
-  <a id="more">&#x25BC;</a>
-</div>
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +33,7 @@ label {
 
 input[type=submit] {
   background-color: #4CAF50;
-  color: white;
+  color: blue;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -82,13 +69,6 @@ input[type=submit]:hover {
   clear: both;
 }
 
-
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
 </style>
 
 <!DOCTYPE html>
@@ -158,6 +138,8 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
+
+
 </style>
 
 
@@ -225,7 +207,9 @@ input[type=submit]:hover {
   </form>
 </div>
 
-
+<p>
+<a href="login.php">ADMIN LOGIN</a>
+</p>
 
 
 </body>
@@ -238,12 +222,9 @@ html, body {
   height:100%;
   font-family: 'Signika Negative', sans-serif;
   font-size: 25px;
+  background-color: #F0FFFF;
 }cslot
 
-html {
-  background: url('https://2.bp.blogspot.com/-SUMDIuZ7m48/TeWj1YDWcNI/AAAAAAAABhg/9fjPiDZHwms/s1600/winter.JPG') fixed;
-  background-size: 100%;
-}
 
 div {
   overflow: hidden;
@@ -258,59 +239,10 @@ a:hover {
   color: #26a1ff;
 }
 
-p {
-  padding: 0 5%;
+.header {
+    color: #0833BF
 }
 
-img {
-  box-shadow: 0px 0px 4px #000;
-}
-
-#header {
-  background: rgba(255, 255, 255, .5);
-  padding: 1%;
-  overflow: hidden;
-  height: 55px;
-}
-#header img {
-  float: left;
-  box-shadow: none;
-}
-#header ul {
-  list-style: none;
-  float: left;
-  padding-left: 10px;
-  margin-top: 15px;
-}
-header ul li {
-  float: left;
-  margin-left: 10px;
-  font-size: 20px;
-}
-
-.fullscreen {
-  height: 95%;
-  position: relativtfnamee;
-}
-.fullscreen .header {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-  color: #fff;
-  text-shadow: 0px 0px 2px #000;
-}
-
-.white {
-  background: #eeeeec;
-  padding: 0 5%;
-}
-.nobg {
-  background: none;
-  padding: 0 5%;
-  color: #fff;
-  text-shadow: 0px 0px 4px #000;
-}
 .semitrans {
   background: rgba(255, 255, 255, .5);
   padding: 0 5%;
@@ -331,5 +263,5 @@ header ul li {
 }
 .floatright {
   float: right;
-  margin 2%;
+  margin: 2%;
 }

@@ -2,9 +2,29 @@
 <html>
 <head>
 <title> TBS Lib Pass Submission </title>
-</head>
-</html>
 
+<style>
+header {
+	text-align: left;
+  padding: 20px 0;
+}
+
+body {
+  background: #2980b9;
+  color: #FFF;
+  font-family: Helvetica;
+  text-align: center;
+  margin: 0;
+}
+
+li, ul {
+  text-align: center;
+}
+
+</style>
+</head>
+
+<header> TBS Library Passes: Submission </header>
 <?php
     require "sqlmanager.php";  # the "import" statement to get the sqlmanager.php functions to be included here
 
@@ -61,3 +81,4 @@
 
 
 ?>
+</html>
