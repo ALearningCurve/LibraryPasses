@@ -28,15 +28,19 @@ This project provides an web based interface for students to make library passes
   Once on the home page, admins will have to click on the link which says "admin login", which will take them to a login page. The username ("libadmin") and passcode ("admin1") are coded into the "login_verifier.php" file in order to verify that valid credentials were used. After loggin in, an admin can view the tables and perform admin actions. These actions include removing or adding students and teachers, removing a pass or all passes, and changing the max passes for a given period.
   
 *Login Page*
+
 ![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Login%20Page.png)
 
 *A Failed Login Will Take The User to This Page*
+
 ![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Login%20Failed.png)
 
 *Database Tables On Admin Page*
+
 ![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Admin%20Table.png)
 
 *Admin Actions*
+
 ![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Admin%20Actions.png)
   
 ## Getting Started
