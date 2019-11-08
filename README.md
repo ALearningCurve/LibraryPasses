@@ -17,7 +17,7 @@ After downloading a copy of the repository and having MySQL installed, a person 
 ```
   mysql -u username -p database_name < LibraryPasses.sql
 ```
-Also, in the "sqlmanager.php", lines 16-19 should be updated with credentials relevant to your database
+Also, in the "sqlmanager.php", lines 14-17 should be updated with credentials relevant to your database
 ```
   $servername = 'localhost'; // <-- Change only if the database is not hosted on the same machine
   $username = 'williamws'; // Change this login
