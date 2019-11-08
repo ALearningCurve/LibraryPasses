@@ -29,6 +29,15 @@ This project provides an web based interface for students to make library passes
   
 *Login Page*
 ![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Login%20Page.png)
+
+*A Failed Login Will Take The User to This Page*
+![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Login%20Failed.png)
+
+*Database Tables On Admin Page*
+![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Admin%20Table.png)
+
+*Admin Actions*
+![Login Page](https://github.com/ALearningCurve/LibraryPasses/blob/master/example%20screenshots/Admin%20Actions.png)
   
 ## Getting Started
 
